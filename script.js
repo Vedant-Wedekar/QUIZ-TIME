@@ -113,7 +113,7 @@ function loadQuestion() {
     q.options.forEach(option => {
         let btn = document.createElement("button");
         btn.textContent = option;
-        btn.className = "block w-full b py-3 rounded-[100px]  border border-gray-900 border-shadow hover:bg-gray-600 transition text-lg font-semibold text-black";
+        btn.className = "block w-full b py-3 rounded-[100px]  border border-gray-900 border-shadow transition text-lg font-semibold text-black";
         // g-gradient-to-r from-fuchsia-500 to-cyan-500
         btn.onclick = function() {
             if (q.checkAnswer(option)) {
