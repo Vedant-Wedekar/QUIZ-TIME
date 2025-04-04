@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<div class="grid">
+<body style="background-image: url('bgg.jpg'); background-size: contain;" class=" text-white flex items-center justify-center min-h-screen p-4 mt- ml-[500px]">
+
+    <div class="w-full max-w-md bg-gray-100 p-6 rounded-lg shadow-lg text-center">
+        <div class="w-[100px] h-[100px] ml-[150px]" style="background-image: url('logo.png'); height: 70px; background-size: contain;"></div>
+        <!-- <h1 class="text-2xl font-bold mb-4 text-black "></h1> -->
+        <p id="question" class="text-lg font-semibold text-black"></p>
+
+        <div id="options" class="mt-4 space-y-3 rounded-[100px]"></div>
+
+        <button onclick="nextQuestion()" class="mt-4 w-full bg-blue-500 text-white px-4 py-3 rounded-[100px] hover:bg-blue-600 transition text-lg">
+            Next Question
+        </button>
+
+        <p id="score" class="mt-4 text-green-400 font-bold text-lg"></p>
+    </div>
+<!-- Footer -->
+<div class="mr-[300px] ml-[-130px]">
+    <div class="w-full h-[100px]"></div>
+<footer class="mt-[100px] w-full bg-gray-800 text-gray-300 text-center py-6 px-4 rounded-t-lg ">
+    <p class="text-lg font-semibold">🎓 This project is built as part of our <span class="text-blue-400">JavaScript Assignment</span> for Web Development.</p>
+    <p class="mt-2 text-sm">It demonstrates concepts like variables, arrays, animation, navigation, statements, operators, and objects with methods.</p>
+    <p class="mt-2 text-sm">Built using 💻 <span class="text-pink-400 font-medium">HTML</span>, <span class="text-sky-400 font-medium">Tailwind CSS</span>, and <span class="text-yellow-400 font-medium">JavaScript</span>.</p>
+
+    <div class="mt-4 flex justify-center gap-6 items-center flex-wrap">
+        <div>
+            <p class="font-bold">👨‍💻 Vedant</p>
+            <a href="https://github.com/Vedant-Wedekar" target="_blank" class="text-blue-400 hover:underline text-sm">GitHub</a> |
+            <a href="https://www.linkedin.com/in/vedant-wedekar-8483a1322/" target="_blank" class="text-blue-400 hover:underline text-sm">LinkedIn</a>
+        </div>
+        <div>
+            <p class="font-bold">👩‍💻 Anushka</p>
+            <a href="https://github.com/ANUSHKA-CHUTE" target="_blank" class="text-blue-400 hover:underline text-sm">GitHub</a> |
+            <a href="https://www.linkedin.com/in/anushka-chute-1a78b129a/" target="_blank" class="text-blue-400 hover:underline text-sm">LinkedIn</a>
+        </div>
+    </div>
+
+    <p class="mt-6 text-xs text-gray-500">© 2025 Vedant & Anushka. All rights reserved.</p>
+</footer></div>
+
+
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
