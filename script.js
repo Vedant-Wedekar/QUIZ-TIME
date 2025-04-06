@@ -1,4 +1,3 @@
-
 const quiz = [
     {   
         question: "What is 2 + 2?",
@@ -6,18 +5,6 @@ const quiz = [
         answer: "4",
         checkAnswer: function(choice) { return choice === this.answer; }
     },
-    // {
-    //     question: "Which is the capital of France?",
-    //     options: ["Berlin", "Madrid", "Paris", "Rome"],
-    //     answer: "Paris",
-    //     checkAnswer: function(choice) { return choice === this.answer; }
-    // },
-    // {
-    //     question: "Which programming language runs in the browser?",
-    //     options: ["Python", "C++", "JavaScript", "Java"],
-    //     answer: "JavaScript",
-    //     checkAnswer: function(choice) { return choice === this.answer; }
-    // },
     {
         question: "What is the most efficient way to complete an assignment due tomorrow?",
         options: [
@@ -29,8 +16,7 @@ const quiz = [
         answer: "Google 'Assignment PDF' at 11:55 PM",
         checkAnswer: function(choice) {
           return choice === this.answer;
-        }
-      },
+        }},
       {
         question: "What is the real reason students join group studies?",
         options: [
@@ -97,12 +83,8 @@ const quiz = [
         }
       }
 ];
-
-
 let currentQuestion = 0;
 let score = 0;
-
-
 function loadQuestion() {
     let q = quiz[currentQuestion];
     document.getElementById("question").textContent = q.question;
@@ -128,7 +110,6 @@ function loadQuestion() {
         optionsDiv.appendChild(btn);
     });
 }
-
 function nextQuestion() {
     if (currentQuestion < quiz.length - 1) {
         currentQuestion++;
@@ -138,6 +119,4 @@ function nextQuestion() {
         document.getElementById("options").innerHTML = "";
     }
 }
-
-
 loadQuestion();
