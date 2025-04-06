@@ -5,8 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quiz App</title>
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS for Scroll Animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    @keyframes fade-in-down {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in-down {
+      animation: fade-in-down 0.3s ease-out;
+    }
+  </style>
 </head>
-<header class="bg-gray-800 text-white w-full">
+
+<body style="background-image: url('bgg.jpg'); background-size: cover; background-position: center;" class="text-white flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-gray-800 text-white w-full">
     <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
       <h1 class="text-2xl font-bold text-blue-400">📘 JS Assignment</h1>
       <div class="md:hidden">
@@ -20,36 +44,41 @@
       <nav id="menu" class="hidden md:flex space-x-6 text-sm font-medium">
         <a href="#" class="hover:text-blue-400 transition">Home</a>
         <a href="#" class="hover:text-blue-400 transition">About</a>
-        <a href="#" class="hover:text-blue-400 transition">Contact</a>
+        <a href="#ky" class="hover:text-blue-400 transition">Contact</a>
       </nav>
     </div>
     <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
       <a href="#" class="block py-2 hover:text-blue-400 transition">Home</a>
       <a href="#" class="block py-2 hover:text-blue-400 transition">About</a>
-      <a href="#ky" class="block py-2 hover:text-blue-400 transition ">Contact</a>
+      <a href="#ky" class="block py-2 hover:text-blue-400 transition">Contact</a>
     </div>
   </header>
-  
-<body style="background-image: url('bgg.jpg'); background-size: cover; background-position: center;" class="text-white flex flex-col min-h-screen">
 
+  <!-- Main Quiz Section -->
   <main class="flex-grow flex items-center justify-center px-4 py-8">
-    <div class="w-full max-w-md bg-gray-100 p-6 rounded-lg shadow-lg text-center">
+    <div class="w-full max-w-md bg-gray-100 p-6 rounded-lg shadow-2xl text-center transition-transform duration-500 hover:scale-105" data-aos="zoom-in">
 
-      <div class="w-[100px] h-[70px] mx-auto mb-4" style="background-image: url('logo.png'); background-size: contain; background-repeat: no-repeat;"></div>
+      <!-- Logo -->
+      <div class="w-[100px] h-[70px] mx-auto mb-4" style="background-image: url('logo.png'); background-size: contain; background-repeat: no-repeat;" data-aos="flip-left" data-aos-delay="200"></div>
 
+      <!-- Question -->
       <p id="question" class="text-lg font-semibold text-black"></p>
 
+      <!-- Options -->
       <div id="options" class="mt-4 space-y-3"></div>
 
-      <button onclick="nextQuestion()" class="mt-4 w-full bg-blue-500 text-white px-4 py-3 rounded-full hover:bg-blue-600 transition text-lg">
+      <!-- Next Button -->
+      <button onclick="nextQuestion()" class="mt-4 w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-4 py-3 rounded-full hover:from-purple-500 hover:to-pink-500 transition-all duration-300 transform hover:scale-105 shadow-lg">
         Next Question
       </button>
 
-      <p id="score" class="mt-4 text-green-400 font-bold text-lg"></p>
+      <!-- Score -->
+      <p id="score" class="mt-4 text-green-600 font-bold text-lg"></p>
     </div>
   </main>
 
-  <footer class="bg-gray-800 text-gray-300 text-center py-6 px-4 rounded-t-lg">
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-300 text-center py-6 px-4 rounded-t-lg" data-aos="fade-up">
     <p class="text-lg font-semibold">🎓 This project is built as part of our <span class="text-blue-400">JavaScript Assignment</span> for Web Development.</p>
     <p class="mt-2 text-sm">It demonstrates concepts like variables, arrays, animation, navigation, statements, operators, and objects with methods.</p>
     <p class="mt-2 text-sm">Built using 💻 <span class="text-pink-400 font-medium">HTML</span>, <span class="text-sky-400 font-medium">Tailwind CSS</span>, and <span class="text-yellow-400 font-medium">JavaScript</span>.</p>
@@ -60,12 +89,140 @@
         <a href="https://github.com/Vedant-Wedekar" target="_blank" class="text-blue-400 hover:underline text-sm">GitHub</a> |
         <a href="https://www.linkedin.com/in/vedant-wedekar-8483a1322/" target="_blank" class="text-blue-400 hover:underline text-sm">LinkedIn</a>
       </div>
-    
+      <div>
+        <p class="font-bold">👩‍💻 Anushka</p>
+        <a href="https://github.com/ANUSHKA-CHUTE" target="_blank" class="text-blue-400 hover:underline text-sm">GitHub</a> |
+        <a href="https://www.linkedin.com/in/anushka-chute-1a78b129a/" target="_blank" class="text-blue-400 hover:underline text-sm">LinkedIn</a>
+      </div>
     </div>
 
     <p class="mt-6 text-xs text-gray-500">© 2025 Vedant. All rights reserved.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- AOS + JS Logic -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    document.getElementById("menu-toggle").addEventListener("click", () => {
+      const mobileMenu = document.getElementById("mobile-menu");
+      mobileMenu.classList.toggle("hidden");
+      mobileMenu.classList.toggle("animate-fade-in-down");
+    });
+
+    const quiz = [
+      {
+        question: "What is 2 + 2?",
+        options: ["3", "4", "5", "6"],
+        answer: "4",
+        checkAnswer: function(choice) { return choice === this.answer; }
+      },
+      {
+        question: "What is the most efficient way to complete an assignment due tomorrow?",
+        options: [
+          "Start a week in advance",
+          "Work on it steadily every day",
+          "Google 'Assignment PDF' at 11:55 PM",
+          "Copy from the class topper and pray"
+        ],
+        answer: "Google 'Assignment PDF' at 11:55 PM",
+        checkAnswer: function(choice) { return choice === this.answer; }
+      },
+      {
+        question: "What is the real reason students join group studies?",
+        options: [
+          "To discuss the syllabus and study effectively",
+          "To divide topics and teach each other",
+          "To gossip, eat snacks, and panic together",
+          "To convince themselves they’re being productive"
+        ],
+        answer: "To gossip, eat snacks, and panic together",
+        checkAnswer: function(choice) { return choice === this.answer; }
+      },
+      {
+        question: "What is the best response when a professor asks, 'Who did the homework?'",
+        options: [
+          "Confidently raise your hand (yeah, right!)",
+          "Pretend to look for your notebook for 10 minutes",
+          "Stare at the floor like it holds all the answers",
+          "Act shocked: 'We had homework?'"
+        ],
+        answer: "Act shocked: 'We had homework?'",
+        checkAnswer: function(choice) { return choice === this.answer; }
+      },
+      {
+        question: "What’s the best way to prepare for an exam?",
+        options: [
+          "Study daily and revise regularly",
+          "Start preparing a week before",
+          "Cram everything the night before with caffeine overdose",
+          "Just trust your fate and get extra sheets to look serious"
+        ],
+        answer: "Cram everything the night before with caffeine overdose",
+        checkAnswer: function(choice) { return choice === this.answer; }
+      },
+      {
+        question: "What’s a professor’s favorite way to ruin a student’s happiness?",
+        options: [
+          "Giving surprise tests on Monday morning",
+          "Assigning group projects where you do all the work",
+          "Writing cryptic exam questions to test your soul",
+          "All of the above (obviously!)"
+        ],
+        answer: "All of the above (obviously!)",
+        checkAnswer: function(choice) { return choice === this.answer; }
+      },
+      {
+        question: "What is the biggest mystery of college life?",
+        options: [
+          "Where do missing pens go?",
+          "How does attendance always fall below 75%?",
+          "Why does WiFi only work when no one needs it?",
+          "Why does the topper say, 'Bro, I didn't study,' and still score 99?"
+        ],
+        answer: "Why does the topper say, 'Bro, I didn't study,' and still score 99?",
+        checkAnswer: function(choice) { return choice === this.answer; }
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function loadQuestion() {
+      const q = quiz[currentQuestion];
+      document.getElementById("question").textContent = q.question;
+
+      const optionsDiv = document.getElementById("options");
+      optionsDiv.innerHTML = "";
+
+      q.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.textContent = option;
+        btn.className = "block w-full py-3 rounded-full border border-gray-300 bg-white hover:bg-blue-200 transition-all duration-300 text-lg font-semibold text-black transform hover:scale-[1.02]";
+        btn.onclick = () => {
+          if (q.checkAnswer(option)) {
+            score++;
+            btn.classList.add("bg-green-500");
+          } else {
+            btn.classList.add("bg-red-500");
+          }
+          document.getElementById("score").textContent = `Score: ${score}`;
+        };
+        optionsDiv.appendChild(btn);
+      });
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < quiz.length - 1) {
+        currentQuestion++;
+        loadQuestion();
+      } else {
+        document.getElementById("question").textContent = "🎉 Quiz Completed!";
+        document.getElementById("options").innerHTML = "";
+      }
+    }
+
+    loadQuestion();
+  </script>
 </body>
 </html>
